@@ -59,6 +59,7 @@
         <div class="mb-3">
             <button 
                 class="btn btn-primary"
+                :disabled="isFormInvalid"
                 @click.prevent="submitForm"
             >Create Page</button>
         </div>
@@ -68,6 +69,11 @@
 <script>
 export default {
     props: ['pageCreated'],
+    computed: {
+        isFormInvalid() {
+            return !this.pageTitle || !this.pageContent || !this.linkText || !this.linkUrl;
+        }
+    },
     data() {
         return {
             pageTitle: '',
@@ -76,19 +82,21 @@ export default {
             linkUrl: ''
         }
     },
-    methods() {
-        if (!this.pageTitle || !this.pageContent || !this.linkText || !this.linkUrl) {
-            alert('Please fill in all fields');
-            return;
-        }
-        this.pageCreated({
-            title: this.pageTitle,
-            content: this.pageContent,
-            link: {
-                text: this.linkText,
-                url: this.linkUrl
+    methods: {
+        submitForm() {
+            if (!this.pageTitle || !this.pageContent || !this.linkText || !this.linkUrl) {
+                alert('Please fill in all fields');
+                return;
             }
-        });
+            this.pageCreated({
+                title: this.pageTitle,
+                content: this.pageContent,
+                link: {
+                    text: this.linkText,
+                    url: this.linkUrl
+                }
+            });
+        }
     }
 }
 </script>
