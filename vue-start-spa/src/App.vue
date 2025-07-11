@@ -6,12 +6,14 @@
     ></navbar>
 
     <page-viewer
-        :page="pages[activePage]"
+      v-if="pages.length > 0"
+      :page="pages[activePage]"
     ></page-viewer>
 
 </template>
 
 <script>
+import { get } from 'core-js/core/dict';
 import Navbar from './components/Navbar.vue';
 import PageViewer from './components/PageViewer.vue';
 
