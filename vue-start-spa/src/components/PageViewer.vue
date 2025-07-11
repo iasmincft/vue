@@ -12,7 +12,7 @@
 </script>
 
 <style scoped>
-.emphasized {
-    color: blue;
-}
+    .emphasized {
+        color: blue;
+    }
 </style>
