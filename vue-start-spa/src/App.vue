@@ -11,7 +11,7 @@
   ></page-viewer>
 
   <create-page
-  
+    :page-created="pageCreated"
   ></create-page>
 </template>
 
@@ -40,7 +40,10 @@ export default{
       let data = await res.json();
 
       this.pages = data;
-    }
+    },
+    pageCreated(pageObj) {
+      console.log(pageObj);
+    },
   }
 }
 </script>
