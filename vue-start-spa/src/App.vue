@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { get } from 'core-js/core/dict';
+
 import Navbar from './components/Navbar.vue';
 import PageViewer from './components/PageViewer.vue';
 
