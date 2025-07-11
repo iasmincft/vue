@@ -59,7 +59,7 @@
         <div class="mb-3">
             <button 
                 class="btn btn-primary"
-                @click.prevent="pageCreated({pageTitle, pageContent})"
+                @click.prevent="submitForm"
             >Create Page</button>
         </div>
     </form>
@@ -70,8 +70,25 @@ export default {
     props: ['pageCreated'],
     data() {
         return {
-            pageTitle: ''
+            pageTitle: '',
+            pageContent: '',
+            linkText: '',
+            linkUrl: ''
         }
     },
+    methods() {
+        if (!this.pageTitle || !this.pageContent || !this.linkText || !this.linkUrl) {
+            alert('Please fill in all fields');
+            return;
+        }
+        this.pageCreated({
+            title: this.pageTitle,
+            content: this.pageContent,
+            link: {
+                text: this.linkText,
+                url: this.linkUrl
+            }
+        });
+    }
 }
 </script>
