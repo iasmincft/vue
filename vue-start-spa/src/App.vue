@@ -1,15 +1,18 @@
 <template>
   <navbar
-        :pages="pages"
-        :active-page="activePage"
-        :nav-link-click="(index) => activePage = index"
-    ></navbar>
+    :pages="pages"
+    :active-page="activePage"
+    :nav-link-click="(index) => activePage = index"
+  ></navbar>
 
-    <page-viewer
-      v-if="pages.length > 0"
-      :page="pages[activePage]"
-    ></page-viewer>
+  <page-viewer
+    v-if="pages.length > 0"
+    :page="pages[activePage]"
+  ></page-viewer>
 
+  <create-page
+  
+  ></create-page>
 </template>
 
 <script>
