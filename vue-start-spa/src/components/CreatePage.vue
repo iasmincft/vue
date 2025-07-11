@@ -48,7 +48,7 @@
                 </div>
                 <div class="row mb-3">
                     <div class ="form-check">
-                        <input type="checkbox" class="form-check-input" v-model="isExternalLink"/>
+                        <input type="checkbox" class="form-check-input" v-model="published"/>
                         <label for="gridCheck1" class="form-check-label">
                             Published
                         </label>
@@ -79,7 +79,8 @@ export default {
             pageTitle: '',
             pageContent: '',
             linkText: '',
-            linkUrl: ''
+            linkUrl: '',
+            published: true
         }
     },
     methods: {
@@ -94,7 +95,8 @@ export default {
                 link: {
                     text: this.linkText,
                     url: this.linkUrl
-                }
+                },
+                published: this.published
             });
         }
     }
