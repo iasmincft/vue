@@ -1,8 +1,9 @@
 import {createApp, VueElement} from 'vue';
 import App from './App.vue';
 import'../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import 'core-js/stable';
-import 'regenerator-runtime/runtime';
+import $bus from './utils/Events';
 
 
-createApp(App).mount('#app');
+const app = createApp(App);
+app.config.globalProperties.$bus = $bus;
+app.mount('#app');

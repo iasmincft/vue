@@ -68,7 +68,14 @@
 
 <script>
 export default {
-    props: ['pageCreated'],
+    emits: {
+        pageCreated(pageTitle, content, link, published) {
+            if (!pageTitle || !content || !link || !link.text || !link.url) {
+                return false;
+            }
+            return true;
+        }
+    },
     computed: {
         isFormInvalid() {
             return !this.pageTitle || !this.pageContent || !this.linkText || !this.linkUrl;
@@ -89,7 +96,8 @@ export default {
                 alert('Please fill in all fields');
                 return;
             }
-            this.pageCreated({
+        
+            this.$emit('pageCreated', {
                 title: this.pageTitle,
                 content: this.pageContent,
                 link: {
