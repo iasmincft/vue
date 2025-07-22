@@ -1,5 +1,5 @@
 <template>
-  <div class="main-banner">
+  <div id="main-banner">
     <h1>Make Your Burger</h1>
   </div>
 </template>
@@ -12,5 +12,21 @@ export default {
 </script>
 
 <style scoped>
+
+  #main-banner {
+    background-image: url('/public/img/burger.jpg');
+    background-position: 0 -350px;
+    height: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  #main-banner h1 {
+    color: #fff;
+    text-align: center;
+    font-size: 60px;
+    padding: 20px 40px;
+  }
 
 </style>
