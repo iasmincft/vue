@@ -48,7 +48,8 @@ export default {
       pao: null,
       carne: null,
       opcionais: [],
-      msg: null
+      msg: null,
+      numPedido: 1
     }
   },
   methods: {
@@ -63,8 +64,9 @@ export default {
     async createBurger(e) {
 
       e.preventDefault()
-
+// aqui as informações são enviadas para o backend
       const data = {
+        numPedidos: this.numPedido,
         nome: this.nome,
         carne: this.carne,
         pao: this.pao,
@@ -84,7 +86,9 @@ export default {
 
       console.log(res)
 
-      this.msg = `Pedido Nº ${res.id} realizado com sucesso!`
+      this.msg = `Pedido Nº ${this.numPedido} realizado com sucesso!`
+
+      this.numPedido++ // incrementa o número do pedido
 
       // clear message
       setTimeout(() => this.msg = "", 3000)

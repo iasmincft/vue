@@ -78,37 +78,5 @@
     }
   ],
   "burgers": [
-    {
-      "id": "1",
-      "nome": "Iasmin",
-      "pao": "Italiano Branco",
-      "carne": "Maminha",
-      "opcionais": [
-        "Bacon",
-        "Cheddar"
-      ],
-      "status": "Solicitado"
-    },
-    {
-      "id": "2",
-      "nome": "João",
-      "pao": "Integral",
-      "carne": "Veggie burger",
-      "opcionais": [
-        "Tomate",
-        "Cebola roxa"
-      ],
-      "status": "Solicitado"
-    },
-    {
-      "id": "7f85",
-      "nome": "ana",
-      "carne": "Maminha",
-      "pao": "Italiano Branco",
-      "opcionais": [
-        "Bacon"
-      ],
-      "status": "Solicitado"
-    }
   ]
 }
