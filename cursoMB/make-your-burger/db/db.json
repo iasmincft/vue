@@ -16,6 +16,14 @@
       {
         "id": 4,
         "tipo": "Integral"
+      },
+      {
+        "id": 5,
+        "tipo": "Australiano"
+      },
+      {
+        "id": 6,
+        "tipo": "Pão Mexicano"
       }
     ],
     "carnes": [
@@ -78,5 +86,41 @@
     }
   ],
   "burgers": [
+    {
+      "id": "6357",
+      "numPedidos": 1,
+      "nome": "a",
+      "carne": "Alcatra",
+      "pao": "3 Queijos",
+      "opcionais": [],
+      "status": "Solicitado"
+    },
+    {
+      "id": "4563",
+      "numPedidos": 2,
+      "nome": "b",
+      "carne": "Veggie burger",
+      "pao": "Australiano",
+      "opcionais": [],
+      "status": "Solicitado"
+    },
+    {
+      "id": "bbc6",
+      "numPedidos": 3,
+      "nome": "c",
+      "carne": "Alcatra",
+      "pao": "Australiano",
+      "opcionais": [],
+      "status": "Solicitado"
+    },
+    {
+      "id": "a12c",
+      "numPedidos": 4,
+      "nome": "d",
+      "carne": "Alcatra",
+      "pao": "Australiano",
+      "opcionais": [],
+      "status": "Solicitado"
+    }
   ]
 }

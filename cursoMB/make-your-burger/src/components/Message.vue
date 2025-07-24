@@ -9,7 +9,20 @@ export default {
   name: "Message",
   props: {
     msg: String
-  }
+  },
+  methods: {
+    createMessage() {
+      
+    },
+
+    deleteMessage() {
+      
+    },
+
+    updateMessage() {
+      
+    }
+  },
 }
 </script>
 

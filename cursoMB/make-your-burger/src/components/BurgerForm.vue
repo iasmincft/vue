@@ -60,6 +60,17 @@ export default {
       this.paes = data.paes
       this.carnes = data.carnes
       this.opcionaisdata = data.opcionais
+
+      const burgersReq = await fetch('http://localhost:3000/burgers');
+      const burgersData = await burgersReq.json();
+
+      if (burgersData.length > 0) {
+        const maxId = Math.max(...burgersData.map(burger => burger.numPedidos || burger.id)); // Use numPedidos se existir, senão id
+        this.numPedido = maxId + 1;
+      } else {
+        this.numPedido = 1; // Começa do 1 se não houver pedidos
+      }
+      
     },
     async createBurger(e) {
 
