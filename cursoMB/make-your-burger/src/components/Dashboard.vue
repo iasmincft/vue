@@ -106,7 +106,7 @@ export default {
 
             const res = await req.json();
 
-            if (option != "") {
+            if (this.status != "") {
                 this.msg = `O pedido Nº ${numPedidos} foi atualizado para ${res.status}!`;
 
                 return;
