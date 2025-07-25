@@ -34,7 +34,7 @@
                                 {{ status.tipo }}
                             </option>
                         </select>
-                        <button class="delete-btn" @click="deleteBurger(burger.id)">Cancelar</button>
+                        <button class="delete-btn" @click="deleteBurger(burger.id, burger.numPedidos)">Cancelar</button>
                     </td>
                 </tr>
                 
@@ -80,7 +80,7 @@ export default {
 
             this.status = data;
         },
-        async deleteBurger(id) {
+        async deleteBurger(id, numPedidos) {
             // aqui deletamos o pedido
             const req = await fetch(`http://localhost:3000/burgers/${id}`, {
                 method: 'DELETE'
@@ -88,9 +88,7 @@ export default {
 
             const res = await req.json();
 
-            this.msg = `Pedido removido com sucesso!`
-
-            //setTimeout(() => this.msg = "", 3000)
+            this.msg = `Pedido Nº ${numPedidos} removido com sucesso!`
 
             this.getPedidos();
         },
@@ -108,12 +106,16 @@ export default {
 
             const res = await req.json();
 
-            // this.msg = `Pedido Nº ${id} atualizado para ${res.status}!`
+            if (option != "") {
+                this.msg = `O pedido Nº ${numPedidos} foi atualizado para ${res.status}!`;
 
-            this.msg = `O pedido Nº ${numPedidos} foi atualizado para ${res.status}!`
-
-            //setTimeout(() => this.msg = "", 3000)
-
+                return;
+            } else {
+                this.msg = null;
+                return;
+                
+            }
+    
         }
     },
     mounted() {
