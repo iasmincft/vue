@@ -28,7 +28,7 @@
                         </ul>
                     </td>
                     <td>
-                        <select name="status" id="status" @change="updateBurger($event, burger.id)">
+                        <select name="status" id="status" @change="updateBurger($event, burger.id, burger.numPedidos)">
                             <option value="">Selecione</option>
                             <option v-for="status in this.status" :key="status.id" :value="status.tipo" :selected="burger.status === status.tipo">
                                 {{ status.tipo }}
@@ -53,7 +53,7 @@ export default {
             burgers: null,
             burger_id: null,
             status: [],
-            msg: null,
+            msg: null
         };
     },
     components: {
@@ -94,7 +94,7 @@ export default {
 
             this.getPedidos();
         },
-        async updateBurger(event, id) {
+        async updateBurger(event, id, numPedidos) {
 
             const option = event.target.value;
 
@@ -108,9 +108,9 @@ export default {
 
             const res = await req.json();
 
-            this.msg = `Pedido Nº ${id} atualizado para ${res.status}!`
+            // this.msg = `Pedido Nº ${id} atualizado para ${res.status}!`
 
-            // this.msg = `O pedido Nº ${this.numPedidos} foi atualizado para ${res.status}!` (Ele não reconhece "numPedidos" porque não existe esse campo no JSON)
+            this.msg = `O pedido Nº ${numPedidos} foi atualizado para ${res.status}!`
 
             //setTimeout(() => this.msg = "", 3000)
 
