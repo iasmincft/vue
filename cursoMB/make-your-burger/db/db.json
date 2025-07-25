@@ -85,5 +85,39 @@
       "tipo": "Finalizado"
     }
   ],
-  "burgers": []
+  "burgers": [
+    {
+      "id": "f002",
+      "numPedidos": 1,
+      "nome": "a",
+      "carne": "Maminha",
+      "pao": "Italiano Branco",
+      "opcionais": [
+        "Bacon"
+      ],
+      "status": "Em produção"
+    },
+    {
+      "id": "4ad0",
+      "numPedidos": 3,
+      "nome": "e",
+      "carne": "Veggie burger",
+      "pao": "Pão Mexicano",
+      "opcionais": [
+        "Salame"
+      ],
+      "status": "Solicitado"
+    },
+    {
+      "id": "a23d",
+      "numPedidos": 4,
+      "nome": "d",
+      "carne": "Picanha",
+      "pao": "Parmesão e Orégano",
+      "opcionais": [
+        "Bacon"
+      ],
+      "status": "Solicitado"
+    }
+  ]
 }
