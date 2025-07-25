@@ -1,9 +1,11 @@
 <template>
+    <Message :msg="msg" v-show="msg" />
     <div id="burger-table-container">
         <table>
             <thead>
                 <tr>
                     <th>#:</th>
+                    <th>Pedido:</th>
                     <th>Cliente:</th>
                     <th>Pão:</th>
                     <th>Carne:</th>
@@ -12,23 +14,27 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Iasmin</td>
-                    <td>Pão de Trigo</td>
-                    <td>Maminha</td>
+                <tr v-for="burger in burgers" :key="burger.id">
+                    <td>{{ burger.id }}</td>
+                    <td>{{ burger.numPedidos }}</td>
+                    <td>{{ burger.nome}}</td>
+                    <td>{{ burger.pao }}</td>
+                    <td>{{ burger.carne}}</td>
                     <td>
                         <ul>
-                            <li>Bacon</li>
-                            <li>Salame</li>
-                            <li>Tomate</li>
+                            <li v-for="(opcional, index) in burger.opcionais" :key="index">
+                                {{ opcional }}
+                            </li>
                         </ul>
                     </td>
                     <td>
-                        <select name="status" id="status">
-                            <option value="">Status</option>
+                        <select name="status" id="status" @change="updateBurger($event, burger.id, burger.numPedidos)">
+                            <option value="">Selecione</option>
+                            <option v-for="status in this.status" :key="status.id" :value="status.tipo" :selected="burger.status === status.tipo">
+                                {{ status.tipo }}
+                            </option>
                         </select>
-                        <button class="delete-btn">Cancelar</button>
+                        <button class="delete-btn" @click="deleteBurger(burger.id)">Cancelar</button>
                     </td>
                 </tr>
                 
@@ -38,14 +44,20 @@
 </template>
 
 <script>
+import Message from './Message.vue';    
+
 export default {
     name: "Dashboard",
     data () {
         return {
-            burger: null,
+            burgers: null,
             burger_id: null,
-            status: []
+            status: [],
+            msg: null
         };
+    },
+    components: {
+        Message
     },
     methods: {
         async getPedidos() {
@@ -57,9 +69,51 @@ export default {
             this.burgers = data;
 
             // resgatar status
-            const statusReq = await fetch('http://localhost:3000/status');
 
-            const statusData = await statusReq.json();  
+            this.getStatus();
+        },
+        async getStatus() {
+            // aqui resgatamos os status do backend
+            const req = await fetch('http://localhost:3000/status');
+
+            const data = await req.json();
+
+            this.status = data;
+        },
+        async deleteBurger(id) {
+            // aqui deletamos o pedido
+            const req = await fetch(`http://localhost:3000/burgers/${id}`, {
+                method: 'DELETE'
+            });
+
+            const res = await req.json();
+
+            this.msg = `Pedido removido com sucesso!`
+
+            //setTimeout(() => this.msg = "", 3000)
+
+            this.getPedidos();
+        },
+        async updateBurger(event, id, numPedidos) {
+
+            const option = event.target.value;
+
+            const dataJson = JSON.stringify({status: option });
+
+            const req = await fetch(`http://localhost:3000/burgers/${id}`, {
+                method: 'PATCH',
+                headers: {'Content-Type': 'application/json'},
+                body: dataJson
+            });
+
+            const res = await req.json();
+
+            // this.msg = `Pedido Nº ${id} atualizado para ${res.status}!`
+
+            this.msg = `O pedido Nº ${numPedidos} foi atualizado para ${res.status}!`
+
+            //setTimeout(() => this.msg = "", 3000)
+
         }
     },
     mounted() {
@@ -94,14 +148,15 @@ th {
 }
 
 th:first-child,
-td:first-child {
+td:first-child,
+td:nth-child(2) {
     width: 5%;
 }
 
-td:nth-child(2),
 td:nth-child(3),
 td:nth-child(4),
-td:nth-child(5) {
+td:nth-child(5),
+td:nth-child(6) {
     width: 19%;
 }
 

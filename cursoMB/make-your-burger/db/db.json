@@ -16,6 +16,14 @@
       {
         "id": 4,
         "tipo": "Integral"
+      },
+      {
+        "id": 5,
+        "tipo": "Australiano"
+      },
+      {
+        "id": 6,
+        "tipo": "Pão Mexicano"
       }
     ],
     "carnes": [
@@ -78,5 +86,14 @@
     }
   ],
   "burgers": [
+    {
+      "id": "6357",
+      "numPedidos": 1,
+      "nome": "a",
+      "carne": "Alcatra",
+      "pao": "3 Queijos",
+      "opcionais": [],
+      "status": "Finalizado"
+    }
   ]
 }
